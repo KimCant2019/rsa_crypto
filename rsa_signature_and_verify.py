@@ -50,3 +50,13 @@ public_key.verify(
     padding.PSS( mgf=padding.MGF1(hashes.SHA256()),
     salt_length=padding.PSS.MAX_LENGTH),hashes.SHA256()
     )
+
+# when a verification fails, it throws an
+# InvalidSignature exception
+plaintext2_as_bytes= 'other text'.encode('utf-8')
+public_key.verify(
+    signature,
+    plaintext2_as_bytes,
+    padding.PSS( mgf=padding.MGF1(hashes.SHA256()),
+    salt_length=padding.PSS.MAX_LENGTH),hashes.SHA256()
+    )
